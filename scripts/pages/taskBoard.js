@@ -18,7 +18,6 @@ async function loadBoards() {
     }
 }
 
-
 function populateBoardsDropdown(boards) {
     console.log(boards)
     boards.forEach((board) => {
@@ -28,7 +27,6 @@ function populateBoardsDropdown(boards) {
         boardsList.appendChild(listItem);
     });
 }
-
 
 function loadUserName() {
     const userName = getFromLocalStorage("user");
