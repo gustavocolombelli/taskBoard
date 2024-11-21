@@ -13,8 +13,4 @@ O principal objetivo desta aplicação é oferecer uma experiência prática par
 
 ## Funcionalidades
 
-- **GET:** Recuperar a lista de boards e tarefas.
-- **POST:** Adicionar novas tarefas ao board.
-- **PUT:** Atualizar informações de uma tarefa existente.
-- **DELETE:** Excluir tarefas do board.
 - **Interface Interativa:** Utilização de HTML e CSS para construir a interface do Task Board e permitir a interação com os dados.
