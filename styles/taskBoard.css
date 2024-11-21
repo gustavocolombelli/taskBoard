@@ -1,0 +1,13 @@
+.navbar-custom {
+    background-color: #007bff;
+}
+
+.navbar-custom .navbar-brand,
+.navbar-custom .nav-link {
+    color: #fff;
+}
+
+.dropdown-scroll {
+  max-height: 50vh; 
+  overflow-y: auto;
+}
