@@ -11,3 +11,27 @@
   max-height: 50vh; 
   overflow-y: auto;
 }
+
+.container {
+  /* display: flex; */
+  /* width: 1000px; */
+  height: 90vh;
+} 
+
+#board {
+  display: flex;
+  height: 90vh;
+  /* align-items: left; */
+  /* max-width: 200%; */
+  overflow-x: scroll;
+}
+
+.column-item {
+  float: left;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 10px;
+  flex: 1;  
+  width: 500px;
+  background-color: #007bff5c;  
+}
