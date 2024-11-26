@@ -48,15 +48,64 @@ async function loadBoard(id) {
 }
 
 function populateColumns(columns) {
-    boardLayout.innerHTML = "";
 
+    boardLayout.innerHTML = ""; 
 
     columns.forEach((column) => {
+
         const columnItem = document.createElement("article");
-        columnItem.className = "column-item"
-        columnItem.innerHTML = `<h5>${column.Name}</h5>`
+        columnItem.className = "column-item";
+
+        const columnHeader = document.createElement("header");
+        columnHeader.className = "column-header";
+        columnHeader.innerHTML = `<h5>${column.Name}</h5>`;
+
+        const columnBody = document.createElement("div");
+        columnBody.className = "column-body";
+        columnBody.id = `tasks-${column.Id}`;
+
+
+        columnItem.appendChild(columnHeader);
+        columnItem.appendChild(columnBody);
+
+
         boardLayout.appendChild(columnItem);
-    })
+
+        fetchTasksByColumn(column.Id).then((res)=>{
+            addTasksToColumn(column.Id, res)
+        });
+
+
+    });
+}
+
+function fetchTasksByColumn(columnId) {
+    const endpoint = `https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/TasksByColumnId?ColumnId=${columnId}`;
+    return fetch(endpoint)
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar tasks para ColumnId ${columnId}: ${response.status}`);
+            }
+            return response.json();
+        })
+        .catch((error) => {
+            console.error(error);
+            return [];
+        });
+}
+
+function addTasksToColumn(columnId, tasks) {
+    const columnBody = document.getElementById(`tasks-${columnId}`);
+
+    tasks.forEach((task) => {
+        const taskItem = document.createElement("div");
+        taskItem.className = "task-item";
+        taskItem.innerHTML = `
+            <h6>${task.Title || "Sem título"}</h6>
+            <p>${task.Description || "Sem descrição"}</p>
+        `;
+        columnBody.appendChild(taskItem);
+    });
 }
 
 function loadUserName() {
