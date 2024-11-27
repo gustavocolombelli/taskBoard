@@ -80,7 +80,7 @@ function populateColumns(columns) {
 }
 
 function fetchTasksByColumn(columnId) {
-    const endpoint = `https://personal-ga2xwx9j.outsystemscloud.com/TaskBoard_CS/rest/TaskBoard/TasksByColumnId?ColumnId=${columnId}`;
+    const endpoint = `${API_BASE_URL}/TaskBoard_CS/rest/TaskBoard/TasksByColumnId?ColumnId=${columnId}`;
     return fetch(endpoint)
         .then((response) => {
             if (!response.ok) {
